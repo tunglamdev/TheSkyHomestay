@@ -1,7 +1,11 @@
+﻿using AutoMapper;
+using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.OpenApi.Models;
+using System.Text.Json.Serialization;
 using TheSkyHomestay.Application.IServices;
+using TheSkyHomestay.Application.Mapping;
 using TheSkyHomestay.Application.Services;
 using TheSkyHomestay.Data.EF;
 using TheSkyHomestay.Data.Models;
@@ -47,9 +51,21 @@ builder.Services.AddIdentityCore<User>(opt =>
     opt.User.AllowedUserNameCharacters = "";
 });
 
+//Add automapper
+builder.Services.AddAutoMapper(typeof(MappingProfile).Assembly);
+
 //Declare DI
 builder.Services.AddTransient<IRoomCategoryService, RoomCategoryService>();
+builder.Services.AddTransient<IRoomService, RoomService>();
+builder.Services.AddTransient<IServiceService, ServiceService>();
+builder.Services.AddTransient<IImageService, ImageService>();
+builder.Services.AddTransient<IBookingService, BookingService>();
+builder.Services.AddTransient<IBillService, BillService>();
 
+//ConfigurationManager configuration = builder.Configuration; // allows both to access and to set up the config
+//IWebHostEnvironment environment = builder.Environment;
+builder.Services.AddMvc()
+                .AddJsonOptions(x => x.JsonSerializerOptions.ReferenceHandler = ReferenceHandler.IgnoreCycles);
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -67,3 +83,13 @@ app.UseAuthorization();
 app.MapControllers();
 
 app.Run();
+
+//builder.WebHost.UseContentRoot(Directory.GetCurrentDirectory());
+//builder.WebHost.UseEnvironment(Environments.Staging);
+
+//builder.WebHost.UseSetting(WebHostDefaults.ApplicationKey, "ApplicationName2");
+//builder.WebHost.UseSetting(WebHostDefaults.ContentRootKey, Directory.GetCurrentDirectory());
+//builder.WebHost.UseSetting(WebHostDefaults.EnvironmentKey, Environments.Staging);
+
+//builder.Host.UseEnvironment(Environments.Staging);
+//builder.Host.UseContentRoot(Directory.GetCurrentDirectory());
