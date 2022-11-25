@@ -12,6 +12,7 @@ namespace TheSkyHomestay.Data.Models
         public string Name { get; set; }
         public DateTime CreatedTime { get; set; }
         public DateTime UpdatedTime { get; set; }
+        public string Image { get; set; }
         public bool IsDeleted { get; set; }
         public virtual List<Room> Rooms { get; set; }
     }

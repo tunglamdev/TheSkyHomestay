@@ -14,7 +14,6 @@ namespace TheSkyHomestay.Data.Models
         public DateTime CheckOutDate { get; set; }
         public decimal Price { get; set; }
         public decimal Total { get; set; }
-        public decimal Deposit { get; set; }
         public DateTime BookingTime { get; set; }
         public DateTime CancelingTime { get; set; }
         public bool IsCanceled { get; set; }

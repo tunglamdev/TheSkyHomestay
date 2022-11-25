@@ -10,13 +10,11 @@ namespace TheSkyHomestay.Data.Models
     {
         public int Id { get; set; }
         public Guid TouristId { get; set; }
-        public int RoomId { get; set; }
         public int Vote { get; set; }
         public string Comment { get; set; }
         public DateTime CreatedTime { get; set; }
         public DateTime UpdatedTime { get; set; }
         public bool IsDeleted { get; set; }
         public virtual User Tourist { get; set; }
-        public virtual Room Room { get; set; }
     }
 }
