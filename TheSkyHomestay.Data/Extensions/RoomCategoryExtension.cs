@@ -16,12 +16,14 @@ namespace TheSkyHomestay.Data.Extensions
                 new RoomCategory() { 
                     Id = 1, 
                     Name = "Phòng 1 giường", 
+                    Image = "phong-1-giuong.jpg",
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
                 new RoomCategory() { 
                     Id = 2, 
-                    Name = "Phòng 2 giường", 
+                    Name = "Phòng 2 giường",
+                    Image = "phong-2-giuong.jpg",
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 }

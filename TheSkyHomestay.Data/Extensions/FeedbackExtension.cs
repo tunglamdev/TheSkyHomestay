@@ -17,7 +17,6 @@ namespace TheSkyHomestay.Data.Extensions
                 {
                     Id = 1,
                     TouristId = new Guid("8A820ADB-93D7-4C6F-9404-BDBFC14419F4"),
-                    RoomId = 1,
                     Vote = 5,
                     Comment = "Phòng rất đẹp! Anh chủ rất dễ thương luôn!",
                     CreatedTime = DateTime.Now,
@@ -27,7 +26,6 @@ namespace TheSkyHomestay.Data.Extensions
                 {
                     Id = 2,
                     TouristId = new Guid("51B4B238-4AE0-4E46-A3F4-E0ACF7666B15"),
-                    RoomId = 3,
                     Vote = 5,
                     Comment = "Phòng rất đẹp! Anh chủ rất dễ thương luôn!",
                     CreatedTime = DateTime.Now,

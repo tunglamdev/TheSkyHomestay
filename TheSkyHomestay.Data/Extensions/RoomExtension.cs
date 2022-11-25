@@ -16,45 +16,45 @@ namespace TheSkyHomestay.Data.Extensions
                 new Room() { 
                     Id = 1, 
                     Name = "Hollywood", 
-                    Price = 500000, 
+                    Price = 500000,
+                    Description = "Phòng 1 giường cho 2 người ở",
                     CategoryId = 1, 
-                    Stars = 5, 
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
                 new Room() { 
                     Id = 2, 
                     Name = "Tokyo", 
-                    Price = 500000, 
+                    Price = 500000,
+                    Description = "Phòng 1 giường cho 2 người ở",
                     CategoryId = 1, 
-                    Stars = 5, 
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
                 new Room() { 
                     Id = 3, 
                     Name = "Berlin", 
-                    Price = 500000, 
+                    Price = 500000,
+                    Description = "Phòng 1 giường cho 2 người ở",
                     CategoryId = 1, 
-                    Stars = 4.5, 
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
                 new Room() { 
                     Id = 4, 
                     Name = "Paris", 
-                    Price = 800000, 
-                    CategoryId = 2, 
-                    Stars = 5, 
+                    Price = 800000,
+                    Description = "Phòng 2 giường cho 2 người ở",
+                    CategoryId = 2,
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
                 new Room() { 
                     Id = 5, 
                     Name = "California", 
-                    Price = 800000, 
-                    CategoryId = 2, 
-                    Stars = 5, 
+                    Price = 800000,
+                    Description = "Phòng 2 giường cho 2 người ở",
+                    CategoryId = 2,
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 }

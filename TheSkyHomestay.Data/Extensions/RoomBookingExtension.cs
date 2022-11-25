@@ -22,7 +22,6 @@ namespace TheSkyHomestay.Data.Extensions
                     CheckOutDate = new DateTime(2022,09,30),
                     Price = 500000,
                     Total = 500000,
-                    Deposit = 200000,
                     BookingTime = DateTime.Now,
                     CancelingTime = new DateTime(),
                 },
@@ -34,7 +33,6 @@ namespace TheSkyHomestay.Data.Extensions
                     CheckOutDate = new DateTime(2022, 09, 30),
                     Price = 500000,
                     Total = 500000,
-                    Deposit = 200000,
                     BookingTime = DateTime.Now,
                     CancelingTime = new DateTime(),
                 },
@@ -46,7 +44,6 @@ namespace TheSkyHomestay.Data.Extensions
                     CheckOutDate = new DateTime(2022, 09, 30),
                     Price = 800000,
                     Total = 800000,
-                    Deposit = 500000,
                     BookingTime = DateTime.Now,
                     CancelingTime = new DateTime(),
                 }
