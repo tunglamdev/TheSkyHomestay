@@ -14,6 +14,7 @@ namespace TheSkyHomestay.Data.Configurations
         public void Configure(EntityTypeBuilder<RoomCategory> builder)
         {
             builder.Property(x => x.Name).IsRequired().HasMaxLength(30);
+            builder.Property(x => x.Image).IsRequired().HasDefaultValue("default.jpg");
             builder.Property(x => x.CreatedTime).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedTime).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.IsDeleted).HasDefaultValue(false);

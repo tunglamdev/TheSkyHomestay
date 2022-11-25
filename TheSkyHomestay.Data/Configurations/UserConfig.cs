@@ -18,7 +18,7 @@ namespace TheSkyHomestay.Data.Configurations
             builder.Property(x => x.Email).IsRequired();
             builder.Property(x => x.CINo).IsRequired();
             builder.Property(x => x.Avatar).HasDefaultValue("default.png");
-            builder.Property(x => x.Password).IsRequired();
+            builder.Property(x => x.Password).IsRequired(false);
             builder.Property(x => x.RegisteredTime).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedTime).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.IsBlocked).HasDefaultValue(false);

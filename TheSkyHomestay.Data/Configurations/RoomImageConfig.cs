@@ -13,7 +13,7 @@ namespace TheSkyHomestay.Data.Configurations
     {
         public void Configure(EntityTypeBuilder<RoomImage> builder)
         {
-            builder.Property(x => x.Name).IsRequired().HasMaxLength(30);
+            builder.Property(x => x.Name).IsRequired().HasMaxLength(300);
             builder.Property(x => x.Description).IsRequired(false);
             builder.Property(x => x.CreatedTime).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedTime).HasDefaultValue(DateTime.Now);

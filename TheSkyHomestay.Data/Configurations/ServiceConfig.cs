@@ -16,6 +16,7 @@ namespace TheSkyHomestay.Data.Configurations
             builder.Property(x => x.Name).IsRequired().HasMaxLength(30);
             builder.Property(x => x.Price).IsRequired();
             builder.Property(x => x.Description).IsRequired(false);
+            builder.Property(x => x.Image).HasDefaultValue("default.jpg");
             builder.Property(x => x.CreatedTime).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.UpdatedTime).HasDefaultValue(DateTime.Now);
             builder.Property(x => x.IsDeleted).HasDefaultValue(false);
