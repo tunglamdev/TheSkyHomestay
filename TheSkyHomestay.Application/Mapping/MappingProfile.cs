@@ -11,6 +11,8 @@ using TheSkyHomestay.DTO.Service;
 using TheSkyHomestay.DTO.Image;
 using TheSkyHomestay.DTO.Bookings;
 using TheSkyHomestay.DTO.Bill;
+using TheSkyHomestay.DTO.Feedback;
+using TheSkyHomestay.DTO.Tourist;
 
 namespace TheSkyHomestay.Application.Mapping
 {
@@ -36,7 +38,8 @@ namespace TheSkyHomestay.Application.Mapping
 
             //Roombooking mapping
             CreateMap<RoomBooking, RoomBookingDTO>()
-                .ForMember(dto => dto.Name, opt => opt.MapFrom(rb => rb.Room.Name));
+                .ForMember(dto => dto.Name, opt => opt.MapFrom(rb => rb.Room.Name))
+                .ForMember(dto => dto.Id, opt => opt.MapFrom(rb => rb.Room.Id));
             CreateMap<CreateRoomBookingDTO, RoomBooking>();
 
             //Servicebooking mapping
@@ -47,10 +50,20 @@ namespace TheSkyHomestay.Application.Mapping
             //Bill mapping
             CreateMap<Bill, BillDTO>()
                 .ForMember(dto => dto.TouristName, opt => opt.MapFrom(b => b.Tourist.Name))
-                .ForMember(dto => dto.PhoneNumber, opt => opt.MapFrom(b => b.Tourist.PhoneNumber));
+                .ForMember(dto => dto.PhoneNumber, opt => opt.MapFrom(b => b.Tourist.PhoneNumber))
+                .ForMember(dto => dto.Email, opt => opt.MapFrom(b => b.Tourist.Email))
+                .ForMember(dto => dto.CiNo, opt => opt.MapFrom(b => b.Tourist.CINo));
 
             //Booking mapping
             CreateMap<BookingDTO, Bill>();
+
+            //Feedback mapping
+            CreateMap<Feedback, FeedbackDTO>()
+                .ForMember(dto => dto.Avatar, opt => opt.MapFrom(f => f.Tourist.Avatar));   
+            CreateMap<CreateFeedbackDTO, Feedback>();
+
+            //User mapping
+            CreateMap<TouristDTO, User>().ReverseMap();
         }
     }
 }
