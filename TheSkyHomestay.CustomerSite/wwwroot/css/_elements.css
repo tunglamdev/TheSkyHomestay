@@ -1,0 +1,25 @@
+/*============== Elements Area css ================*/
+.genric-btn.success {
+    color: #4cd3e3;
+    background: transparent;
+    border: 1px solid #4cd3e3;
+}
+
+.genric-btn.success:hover {
+    color: #fff;
+    border: 1px solid #4cd3e3;
+    background: #4cd3e3;
+}
+
+.genric-btn.success-border {
+    color: #4cd3e3;
+    border: 1px solid #4cd3e3;
+    background: transparent;
+}
+
+.genric-btn.success-border:hover {
+    color: #fff;
+    background: #4cd3e3;
+    border: 1px solid #4cd3e3;
+}
+/*============== End Elements Area css ================*/
