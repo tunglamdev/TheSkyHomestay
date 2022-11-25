@@ -1,0 +1,211 @@
+@model AboutViewModel
+@*=============Breadcrumb===========*@
+<section class="breadcrumb_area">
+    <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background=""></div>
+    <div class="container">
+        <div class="page-cover text-center">
+            <h2 class="page-cover-tittle">Về Sky Homestay</h2>
+            <ol class="breadcrumb">
+                <li><a asp-controller="Home" asp-action="Index">Trang chủ</a></li>
+                <li class="active">Sky Homestay</li>
+            </ol>
+        </div>
+    </div>
+</section>
+
+@*==============About==============*@
+<section class="about_history_area section_gap">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-6 d_flex align-items-center">
+                <div class="about_content ">
+                    <h2 class="title title_color">Về Sky Homestay <br>Sứ mệnh & Tầm nhìn</h2>
+                    <p>The Sky Homestay là một doanh nghiệp kinh doanh nhà nghỉ tại Hòn Sơn. Với sứ mệnh phục vụ và đem đến trải nghiệm tuyệt vời cho du khách tại Hòn Sơn, The Sky Homestay luôn cố gắng thay đổi từng ngày để xứng đáng là một trong những điểm đến đáng quan tâm trong thị trường dịch vụ không khói tại mảnh đất hiền hòa Kiên Giang.</p>
+                    <a asp-controller="rooms" class="button_hover theme_btn_two">Đặt phòng ngay</a>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <img class="img-fluid" src="~/images/about_bg.jpg" alt="img">
+            </div>
+        </div>
+    </div>
+</section>
+
+@*=============Facilities==============*@
+<section class="facilities_area section_gap">
+    <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">  
+    </div>
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 class="title_w">Tiện ích tại nhà Sky</h2>
+            <p style="color: #fff">Những tiện ích nếu bạn chọn The Sky Homestay đồng hành tại thiên đường Hòn Sơn</p>
+        </div>
+        <div class="row mb_30">
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr lnr-bicycle"></i>Dễ dàng di chuyển</h4>
+                    <p>Với vị trí gần cầu cảng, bạn sẽ dễ dàng di chuyển đến những nơi khác trên đảo.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr lnr-dinner"></i>Hỗ trợ nấu nướng</h4>
+                    <p>Homestay có sẵn bếp cho bạn chế biến thức ăn, hỗ trợ nấu nướng cho bạn luôn nhé!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr lnr-shirt"></i>Máy giặt tự phục vụ</h4>
+                    <p>Sky có máy giặt tự phục vụ, bạn không phải lo về việc giặt phơi quần áo nhé!</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr lnr-music-note"></i>Thoải mái hát ca</h4>
+                    <p>Sky phục vụ loa kẹo kéo cho bạn thoải mái thể hiện giọng hát của mình.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr lnr-camera"></i>View biển cực đẹp</h4>
+                    <p>Bạn sẽ thoải mái check in với view biển từ trên cao cực xịn tại Sky.</p>
+                </div>
+            </div>
+            <div class="col-lg-4 col-md-6">
+                <div class="facilities_item">
+                    <h4 class="sec_h4"><i class="lnr lnr-coffee-cup"></i>Cafe sân thượng</h4>
+                    <p>Sân thượng ban đêm với quán cafe cực chill phục vụ nước uống và các món ăn vặt.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*================Blog=============*@
+<section class="blog_area single-post-area">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8 posts-list">
+                <div class="single-post row">
+                    <div class="col-lg-12 col-md-9 blog_details">
+                        <h2>Đôi nét về Hòn Sơn - Hòn đảo diệu kỳ</h2>
+                        <p class="excert">
+                            Hòn sơn hay còn gọi là Hòn Sơn Rái - một cái tên nghe hài hòa cũng giống như những con người sinh sống nơi đây: hiền lành, chân thật. Tháng 3 đến tháng 9 là thời điểm đẹp nhất để du lịch Hòn Sơn. Nơi đây đã có lưới điện quốc gia nối từ đất liền nên bạn không lo vấn đề về tiện nghi.
+                        </p>
+                        <div class="feature-img">
+                            <img class="img-fluid" src="~/images/duong-quanh-dao.jpg" alt="">
+                        </div>
+                        <p>
+                            Ấn tượng nhất ở Hòn Sơn là cung đường khoảng 16km ven đảo rất đẹp với những rặng dừa. Dù nhỏ bé, hòn đảo có khá nhiều điểm check-in, tham quan lý tưởng và hấp dẫn. Ngoài ra còn cung đường xuyên đảo với nhiều con dốc thật sự ấn tượng bởi vẻ đẹp hoang sơ, xa xa là núi, dưới là biển cùng hoa lá cỏ cây làm cho nơi đây thực sự như một thiên đường du lịch.
+                        </p>
+                        <div class="feature-img">
+                            <img class="img-fluid" src="~/images/cau-cang.jpg" alt="">
+                        </div>
+                        <p>
+                            Vào buổi chiều tối khi hoàng hôn buông xuống chính là lúc những con tàu bắt đầu đua nhau ra khơi để đánh cá, mang về rất nhiều hải sản vào sáng hôm sau. Bãi Bấc chính là bãi biển dành cho tàu cá, bạn sẽ được nhìn thấy rất nhiều tàu thuyền neo đậu tại cầu cảng, một nhịp sống rất thanh bình và yên ả, khác hẵn với sự tấp nập tại cầu cảng bãi Nhà chuyên đón khách du lịch.
+                        </p>
+                    </div>
+                    <div class="col-lg-12">
+                        <div class="quotes">
+                            "Những ngày tuổi trẻ tưởng dài rộng mênh mông nhưng kỳ thực lại rất hữu hạn ngắn ngủi. Nên nếu bạn còn trẻ hãy học cách để biến tuổi trẻ của bạn thành vô giá, và hãy để Sky được trở thành một phần trong thanh xuân của bạn nhé!"
+                        </div>
+                        <div class="row">
+                            <div class="col-6">
+                                <img class="img-fluid" src="~/images/bai-bien-1.jpg" alt="">
+                            </div>
+                            <div class="col-6">
+                                <img class="img-fluid" src="~/images/bai-bien-2.jpg" alt="">
+                            </div>	
+                            <div class="col-lg-12 blog_details">
+                                <p>
+                                    Bạn đã từng tự mình trên chiếc xe qua những con dốc, ngắm nhìn biển xanh lung linh trong ánh hoàng hôn, lắng nghe những cơn gió biển rì rào bên tai du dương một tình yêu quê hương đất nước.
+                                </p>
+                                <div class="feature-img">
+                                    <img class="img-fluid" src="~/images/hoang-hon.jpg" alt="">
+                                </div>
+                                <p>
+                                    Hãy một lần đến với Hòn Sơn, tình người chan hòa trong tình đất, tạm gác lại bao bộn bề nơi phố thị, tạm gác lại những suy tư muộn phiền để tâm hồn được hòa vào đất trời, biển núi, nơi chỉ có bạn với thiên nhiên yên bình, nơi sẽ làm cho bạn biết yêu đời hơn vì quanh mình đều là những điều tốt đẹp dù là nhỏ nhất.
+                                </p>											
+                            </div>									
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-4">
+                <div class="blog_right_sidebar">
+                    <aside class="single_sidebar_widget author_widget">
+                        <img class="author_img rounded-circle" src="~/images/phong-1-giuong.jpg" alt="">
+                        <h4>The Sky Homestay</h4>
+                        <p>Dịch vụ lưu trú tại Hòn Sơn</p>
+                        <div class="social_icon">
+                            <a href="#"><i class="fa fa-facebook"></i></a>
+                            <a href="#"><i class="fa fa-twitter"></i></a>
+                            <a href="#"><i class="fa fa-github"></i></a>
+                            <a href="#"><i class="fa fa-behance"></i></a>
+                        </div>
+                        <p>Sự hài lòng của du khách chính là cảm hứng và động lực để nhà Sky nâng cao chất lượng dịch vụ từng ngày.</p>
+                        <div class="br"></div>
+                    </aside>
+                    <aside class="single_sidebar_widget popular_post_widget">
+                        @foreach (var item in Model.RoomCategories)
+                        {
+                            <div class="media post_item">
+                                <img class="blog_categorie_img" src="@item.Image" alt="post">
+                                <div class="media-body">
+                                    <a asp-controller="rooms" asp-action="category" asp-route-Id="@item.Id"><h3>@item.Name</h3></a>
+                                    <p>Nhanh tay đặt ngay</p>
+                                </div>
+                            </div>
+                        }
+
+                        @foreach (var item in Model.Services)
+                        {
+                            <div class="media post_item">
+                                <img class="blog_categorie_img" src="@item.Image" alt="post">
+                                <div class="media-body">
+                                    <a href="blog-details.html"><h3>@item.Name</h3></a>
+                                    <p>Nhanh tay đặt ngay</p>
+                                </div>
+                            </div>
+                        }
+                        <div class="br"></div>
+                    </aside>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+@*==============Feedback============*@
+<section class="testimonial_area section_gap">
+    <div class="overlay bg-parallax" data-stellar-ratio="0.8" data-stellar-vertical-offset="0" data-background="">
+    </div>
+    <div class="container">
+        <div class="section_title text-center">
+            <h2 class="title_w">Feedback từ khách của Sky</h2>
+            <p style="color: #fff">Cảm hứng và động lực để nhà Sky nâng cao chất lượng dịch vụ của mình</p>
+        </div>
+        <div class="testimonial_slider owl-carousel">
+            @foreach (var item in Model.Feedbacks)
+            {
+                <div class="media testimonial_item">
+                    <img class="rounded-circle" src="~/images/testtimonial-1.jpg" alt="">
+                    <div class="media-body">
+                        <p>@item.Comment</p>
+                        <h4 class="sec_h4">@item.TouristName</h4>
+                        <div class="star">
+                            @for (var i = 0; i < @item.Vote; i++)
+                            {
+                                <i class="fa fa-star"></i>
+                            }
+                            @for (var i = 0; i < 5 - @item.Vote; i++)
+                            {
+                                <i class="fa fa-star-o"></i>
+                            }
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</section>
