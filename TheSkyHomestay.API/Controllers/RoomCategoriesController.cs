@@ -17,6 +17,11 @@ namespace TheSkyHomestay.API.Controllers
             _roomCategoryService = roomCategoryService;
         }
 
+        private string setImageName(string currentName)
+        {
+            return String.Format("{0}://{1}{2}/images/categories/{3}", Request.Scheme, Request.Host, Request.PathBase, currentName);
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Get()
@@ -24,6 +29,7 @@ namespace TheSkyHomestay.API.Controllers
             var result = await _roomCategoryService.GetAllAsync();
             if (result.StatusCode == 200)
             {
+                result.Data.ForEach(r => r.Image = setImageName(r.Image));
                 return Ok(result.Data);
             }
             return BadRequest(result.Message);
@@ -38,6 +44,7 @@ namespace TheSkyHomestay.API.Controllers
             {
                 return NotFound(result.Message);
             }
+            result.Data.Image = setImageName(result.Data.Image);
             return Ok(result.Data);
         }
 

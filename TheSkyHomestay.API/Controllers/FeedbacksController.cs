@@ -2,25 +2,26 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using TheSkyHomestay.Application.IServices;
-using TheSkyHomestay.DTO.Bookings;
+using TheSkyHomestay.Application.Services;
+using TheSkyHomestay.DTO.Feedback;
 
 namespace TheSkyHomestay.API.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    public class BookingsController : ControllerBase
+    public class FeedbacksController : ControllerBase
     {
-        private readonly IBookingService _bookingService;
-        public BookingsController(IBookingService bookingService)
+        private readonly IFeedbackService _feedbackService;
+        public FeedbacksController(IFeedbackService feedbackService)
         {
-            _bookingService = bookingService;
+            _feedbackService = feedbackService;
         }
 
-        [HttpPost("Book")]
+        [HttpGet]
         [AllowAnonymous]
-        public async Task<IActionResult> Book([FromBody] BookingDTO request)
+        public async Task<IActionResult> Get()
         {
-            var result = await _bookingService.BookAsync(request);
+            var result = await _feedbackService.GetAllAsync();
             if (result.StatusCode == 200)
             {
                 return Ok(result.Data);
@@ -28,11 +29,11 @@ namespace TheSkyHomestay.API.Controllers
             return BadRequest(result.Message);
         }
 
-        [HttpGet("GetBookingDetail/{billId}")]
+        [HttpPost]
         [AllowAnonymous]
-        public async Task<IActionResult> GetBookingDetail([FromRoute] int billId)
+        public async Task<IActionResult> Create([FromBody] CreateFeedbackDTO request)
         {
-            var result = await _bookingService.GetBookingDetailAsync(billId);
+            var result = await _feedbackService.CreateAsync(request);
             if (result.StatusCode == 200)
             {
                 return Ok(result.Data);

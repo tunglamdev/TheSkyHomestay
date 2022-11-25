@@ -19,6 +19,11 @@ namespace TheSkyHomestay.API.Controllers
             _roomCategoryService = roomCategoryService;
         }
 
+        private string setImageName(string currentName)
+        {
+            return String.Format("{0}://{1}{2}/images/rooms/{3}", Request.Scheme, Request.Host, Request.PathBase, currentName);
+        }
+
         [HttpGet]
         [AllowAnonymous]
         public async Task<IActionResult> Get()
@@ -26,6 +31,7 @@ namespace TheSkyHomestay.API.Controllers
             var result = await _roomService.GetAllAsync();
             if (result.StatusCode == 200)
             {
+                result.Data.ForEach(r => r.Images.ForEach(i => i.Name = setImageName(i.Name)));
                 return Ok(result.Data);
             }
             return BadRequest(result.Message);
@@ -38,6 +44,7 @@ namespace TheSkyHomestay.API.Controllers
             var result = await _roomService.GetByIdAsync(Id);
             if (result.StatusCode == 200)
             {
+                result.Data.Images.ForEach(i => i.Name = setImageName(i.Name));
                 return Ok(result.Data);
             }
             return BadRequest(result.Message);
@@ -53,6 +60,7 @@ namespace TheSkyHomestay.API.Controllers
                 var result = await _roomService.GetByCategoryIdAsync(CategoryId);
                 if (result.StatusCode == 200)
                 {
+                    result.Data.ForEach(r => r.Images.ForEach(i => i.Name = setImageName(i.Name)));
                     return Ok(result.Data);
                 }
                 return BadRequest(checkCategoryId.Message);
@@ -72,7 +80,7 @@ namespace TheSkyHomestay.API.Controllers
                 {
                     return BadRequest(result.Message);
                 }
-                return Ok(result.Message);
+                return Ok(result.Data);
             }
             return NotFound(checkRoomCategory.Message);
         }
@@ -104,6 +112,53 @@ namespace TheSkyHomestay.API.Controllers
                 return BadRequest(result.Message);
             }
             return Ok(result.Message);
+        }
+
+        [HttpPost("GetByChecking")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetByChecking([FromBody] RoomCheckingDTO request)
+        {
+            var result = await _roomService.GetByCheckingAsync(request);
+            if (result.StatusCode == 200)
+            {
+                result.Data.ForEach(r => r.Images.ForEach(i => i.Name = setImageName(i.Name)));
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("GetByCheckingByCategory")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetByCheckingByCategory([FromBody] RoomCheckingByCategoryDTO request)
+        {
+            var result = await _roomService.GetByCheckingByCategoryAsync(request);
+            if (result.StatusCode == 200)
+            {
+                result.Data.ForEach(r => r.Images.ForEach(i => i.Name = setImageName(i.Name)));
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("GetByAdminChecking")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetByAdminChecking([FromBody] RoomCheckingDTO request)
+        {
+            var result = await _roomService.GetByAdminCheckingAsync(request);
+            if (result.StatusCode == 200)
+            {
+                result.Data.ForEach(r => r.Room.Images.ForEach(i => i.Name = setImageName(i.Name)));
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpPost("GetBookingDetail")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetBookingDetail([FromBody] CheckBookingDetailDTO request)
+        {
+            var result = await _roomService.GetBookingDetailAsync(request);
+            return Ok(result.Data);
         }
     }
 }
