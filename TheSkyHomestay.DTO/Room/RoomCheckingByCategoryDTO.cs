@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace TheSkyHomestay.DTO.Room
 {
-    public class EditRoomDTO
+    public class RoomCheckingByCategoryDTO
     {
-        public int Id { get; set; }
-        public string Name { get; set; }
-        public decimal Price { get; set; }
-        public string Description { get; set; }
         public int CategoryId { get; set; }
+        public DateTime FromDate { get; set; }
+        public DateTime ToDate { get; set; }
     }
 }
+

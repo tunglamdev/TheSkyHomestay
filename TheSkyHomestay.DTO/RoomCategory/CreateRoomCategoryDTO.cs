@@ -9,5 +9,6 @@ namespace TheSkyHomestay.DTO.RoomCategory
     public class CreateRoomCategoryDTO
     {
         public string Name { get; set; }
+        public string Image { get; set; }
     }
 }

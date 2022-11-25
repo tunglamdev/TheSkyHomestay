@@ -4,16 +4,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace TheSkyHomestay.DTO.Bookings
+namespace TheSkyHomestay.DTO.Room
 {
-    public class RoomBookingDTO
+    public class BookingDetailDTO
     {
-        public int Id { get; set; }
         public string Name { get; set; }
+        public string Email { get; set; }
+        public string PhoneNumber { get; set; }
+        public string CINo { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
-        public decimal Price { get; set; }
-        public decimal Total { get; set; }
-        public decimal Deposit { get; set; }
     }
 }
