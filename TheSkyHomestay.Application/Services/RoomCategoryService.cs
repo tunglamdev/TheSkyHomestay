@@ -101,6 +101,7 @@ namespace TheSkyHomestay.Application.Services
             }
 
             roomcategory.Name = request.Name;
+            if (request.Image != "") roomcategory.Image = request.Image;
             roomcategory.UpdatedTime = DateTime.Now;
             await _context.SaveChangesAsync();
             return new ApiResult<bool>(true)

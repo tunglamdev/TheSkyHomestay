@@ -94,6 +94,7 @@ namespace TheSkyHomestay.Application.Services
                 service.Name = request.Name;
                 service.Price = request.Price;
                 service.Description = request.Description;
+                if (request.Image != "") service.Image = request.Image;
                 service.UpdatedTime = DateTime.Now;
                 await _context.SaveChangesAsync();
 

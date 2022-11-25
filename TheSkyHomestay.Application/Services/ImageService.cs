@@ -1,14 +1,10 @@
 ﻿using AutoMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.EntityFrameworkCore;
-using System.Net.Http.Headers;
 using TheSkyHomestay.Application.IServices;
 using TheSkyHomestay.Data.EF;
 using TheSkyHomestay.Data.Models;
 using TheSkyHomestay.DTO.Contants;
 using TheSkyHomestay.DTO.Image;
-using TheSkyHomestay.DTO.Service;
-using static System.Net.Mime.MediaTypeNames;
 
 namespace TheSkyHomestay.Application.Services
 {
@@ -94,16 +90,5 @@ namespace TheSkyHomestay.Application.Services
                 StatusCode = checkImageExist.StatusCode
             };
         }
-        //private async Task<string> SaveFileAsync(IFormFile file)
-        //{
-        //    //if (file == null)
-        //    //{
-        //    //    throw new GeeksBakeryException("Cannot add null file");
-        //    //}
-        //    //var originalFileName = ContentDispositionHeaderValue.Parse(file.ContentDisposition).FileName.Trim('"');
-        //    //var fileName = $"{Guid.NewGuid()}{Path.GetExtension(originalFileName)}";
-        //    //await _storageService.SaveFileAsync(file.OpenReadStream(), fileName);
-        //    //return fileName;
-        //}
     }
 }

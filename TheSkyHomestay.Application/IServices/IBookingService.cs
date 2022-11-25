@@ -10,6 +10,7 @@ namespace TheSkyHomestay.Application.IServices
 {
     public interface IBookingService
     {
-        public Task<ApiResult<bool>> BookAsync(BookingDTO request);
+        public Task<ApiResult<int>> BookAsync(BookingDTO request);
+        public Task<ApiResult<BookingDetailDTO>> GetBookingDetailAsync(int billId);
     }
 }
