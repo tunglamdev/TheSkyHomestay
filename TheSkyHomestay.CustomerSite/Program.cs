@@ -24,6 +24,17 @@ builder.Services.AddAuthentication(CookieAuthenticationDefaults.AuthenticationSc
         options.Cookie.IsEssential = true;
     });
 
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy(name: "CORS",
+                      policy =>
+                      {
+                          policy.AllowAnyOrigin()
+                          .AllowAnyMethod()
+                          .AllowAnyHeader();
+                      });
+});
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

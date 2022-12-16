@@ -3,6 +3,7 @@ using Refit;
 using System.Globalization;
 using TheSkyHomestay.CustomerSite.Models;
 using TheSkyHomestay.CustomerSite.Others;
+using TheSkyHomestay.Data.Models;
 using TheSkyHomestay.DTO.Bookings;
 using TheSkyHomestay.DTO.Email;
 using TheSkyHomestay.DTO.Room;
@@ -14,6 +15,7 @@ namespace TheSkyHomestay.CustomerSite.Controllers
     public class RoomsController : Controller
     { 
         private IRoomAPI _roomApi;
+        private IServiceAPI _serviceApi;
         private IUserAPI _userApi;
         private IBookingAPI _bookingApi;
         private IEmailAPI _emailApi;
@@ -21,6 +23,7 @@ namespace TheSkyHomestay.CustomerSite.Controllers
         public RoomsController()
         {
             _roomApi = RestService.For<IRoomAPI>("https://localhost:7241");
+            _serviceApi = RestService.For<IServiceAPI>("https://localhost:7241");
             _userApi = RestService.For<IUserAPI>("https://localhost:7241");
             _bookingApi = RestService.For<IBookingAPI>("https://localhost:7241");
             _emailApi = RestService.For<IEmailAPI>("https://localhost:7241");
@@ -83,8 +86,11 @@ namespace TheSkyHomestay.CustomerSite.Controllers
         {
             var room = _roomApi.GetById(Id).GetAwaiter().GetResult();
             _viewData.Room = room;
+            var services = _serviceApi.GetAll().GetAwaiter().GetResult();
+            _viewData.Services = services;
             _viewData.CheckInDate = DateTime.Parse(CheckInDate);
             _viewData.CheckOutDate = DateTime.Parse(CheckOutDate);
+            _viewData.RoomTotal = (decimal)(DateTime.Parse(CheckOutDate) - DateTime.Parse(CheckInDate)).TotalDays * room.Price;
             return View(_viewData);
         }
 
@@ -103,15 +109,25 @@ namespace TheSkyHomestay.CustomerSite.Controllers
             {
                 _viewData.ErrorMessage = "Vui lòng nhập đầy đủ thông tin đặt phòng!";
             }
-            //Create new anonymous account
-            var newUserDTO = new RegisterAnonymousDTO()
+            var newUserId = new Guid("00000000-0000-0000-0000-000000000000");
+            string userId = User.Claims.Where(c => c.Type == "id").Select(c => c.Value).SingleOrDefault();
+            if(userId == null)
             {
-                Name = request.Name,
-                Email = request.Email,
-                PhoneNumber = request.PhoneNumber,
-                CINo = request.CINo
-            };
-            var newUserId = _userApi.RegisterAnonymous(newUserDTO).GetAwaiter().GetResult();
+                //Create new anonymous account
+                var newUserDTO = new RegisterAnonymousDTO()
+                {
+                    Name = request.Name,
+                    Email = request.Email,
+                    PhoneNumber = request.PhoneNumber,
+                    CINo = request.CINo
+                };
+                newUserId = _userApi.RegisterAnonymous(newUserDTO).GetAwaiter().GetResult();
+                
+            }
+            else
+            {
+                newUserId = new Guid(userId);
+            }
             var userIdCheck = new Guid("00000000-0000-0000-0000-000000000000");
             if (newUserId == userIdCheck)
             {
@@ -123,22 +139,41 @@ namespace TheSkyHomestay.CustomerSite.Controllers
             var newBookingDTO = new BookingDTO()
             {
                 TouristId = newUserId,
-                Rooms = new List<CreateRoomBookingDTO>(){
+                Rooms = new List<CreateRoomBookingDTO>() {
                     new CreateRoomBookingDTO()
                     {
                         RoomId = request.RoomId,
                         CheckInDate = DateTime.Parse(request.CheckInDate),
                         CheckOutDate = DateTime.Parse(request.CheckOutDate),
                         Price = request.Price,
+                        NumberOfAdult = request.NumberOfAdult,
+                        NumberOfChild = request.NumberOfChild,
                         Total = (decimal)(DateTime.Parse(request.CheckOutDate) - DateTime.Parse(request.CheckInDate)).TotalDays * request.Price,
                     }
                 },
                 Services = new List<CreateServiceBookingDTO>()
             };
 
+            decimal servicesTotal = 0;
+            if (request.Services != null)
+            {
+                for(var i = 0; i< request.Services.Count; i++)
+                {
+                    var newService = _serviceApi.GetById(request.Services.ElementAt(i)).GetAwaiter().GetResult();
+                    var service = new CreateServiceBookingDTO()
+                    {
+                        ServiceId = newService.Id,
+                        Price = newService.Price,
+                        Amount = request.AmountService.ElementAt(i),
+                        Total = request.AmountService.ElementAt(i) * newService.Price,
+                    };
+                    newBookingDTO.Services.Add(service);
+                    servicesTotal = servicesTotal + service.Total;
+                };
+            }
             var billId = _bookingApi.CreateBooking(newBookingDTO).GetAwaiter().GetResult();
 
-            return Payment(billId, (decimal)(DateTime.Parse(request.CheckOutDate) - DateTime.Parse(request.CheckInDate)).TotalDays * request.Price);
+            return Payment(billId, (decimal)(DateTime.Parse(request.CheckOutDate) - DateTime.Parse(request.CheckInDate)).TotalDays * request.Price + servicesTotal);
         }
 
         public IActionResult Payment(int BillId, decimal Total)
@@ -169,7 +204,7 @@ namespace TheSkyHomestay.CustomerSite.Controllers
             return Redirect(paymentUrl);
         }
 
-        public ActionResult BookingResult()
+        public IActionResult BookingResult()
         {
             var vnpayData = HttpContext.Request.Query;
             PayLib pay = new PayLib();
@@ -199,8 +234,18 @@ namespace TheSkyHomestay.CustomerSite.Controllers
             $"<li>Tên phòng đã đặt: {result.RoomName} </li>" +
                                     $"<li>Ngày check-in nhận phòng: {result.CheckInDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)}</li>" +
                                     $"<li>Ngày check-out trả phòng: {result.CheckOutDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)}</li>" +
-                                    $"<li>Số tiền đã thanh toán: {@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", result.Total)}</li>" +
                                 $"</ul>";
+            if (result.Services.Count != 0)
+            {
+                sendEmailDTO.Body += $"<p>*Các dịch vụ đã đặt kèm theo:</p>";
+                sendEmailDTO.Body += $"<ul>";
+                foreach (var service in result.Services)
+                {
+                    sendEmailDTO.Body += $"<li>{service.Name}: {@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", service.Price)}/lượt ({service.Amount} lượt)</li>";
+                }
+                sendEmailDTO.Body += $"</ul>";
+            }
+            sendEmailDTO.Body += $"<h2>Số tiền đã thanh toán: {@String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", result.Total)}</h2>";
             sendEmailDTO.Body += $"<p>Quý du khách vui lòng kiểm tra lại thông tin và liên hệ ngay với chúng tôi nếu có sai sót!</p>";
             sendEmailDTO.Body += $"<p>The Sky Homestay Hòn Sơn rất hân hạnh được phục vụ quý du khách!</p>";
             sendEmailDTO.Body += $"<p>Mọi chi tiết vui lòng liên hệ: </p>";
@@ -214,6 +259,7 @@ namespace TheSkyHomestay.CustomerSite.Controllers
 
             var room = _roomApi.GetById(result.RoomId).GetAwaiter().GetResult();
             _viewData.Room = room;
+            _viewData.Room.Price = result.Price;
             _viewData.CheckInDate = result.CheckInDate;
             _viewData.CheckOutDate = result.CheckOutDate;
             _viewData.TouristName = result.TouristName;
@@ -221,6 +267,7 @@ namespace TheSkyHomestay.CustomerSite.Controllers
             _viewData.PhoneNumber = result.PhoneNumber;
             _viewData.CINo = result.CINo;
             _viewData.Total = result.Total;
+            _viewData.ServiceBooking = result.Services;
             return View(_viewData);
         }
     }

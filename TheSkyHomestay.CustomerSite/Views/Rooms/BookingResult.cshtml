@@ -46,7 +46,7 @@
                 <div class="single-product-details">
                     <form class="contact_form">
                         <h1>Kết quả đặt phòng</h1>
-                        <h2>@Model.Room.Name</h2>
+                        <h2>@Model.Room.Name : @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.Room.Price)</h2>
                         <div class="row">
                             <div class="col-md-6">
                                 <h5>Ngày đến (check-in):</h5>
@@ -57,7 +57,7 @@
                         </div>
                         <div class="row">
                             <div class="form-group col-md-6">
-                                <input type="text" class="form-control" value="@Model.CheckInDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)" readonly>
+                                <input type="text" class="form-control" placeholder="@Model.CheckInDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)" readonly>
                             </div>
                             <div class="form-group col-md-6">
                                 <input type="text" class="form-control" placeholder="@Model.CheckOutDate.ToString("dd/M/yyyy", CultureInfo.InvariantCulture)" readonly>
@@ -96,6 +96,26 @@
                             </div>
                         </div>
                     </form>
+                    <div class="single-product-details">
+                        <h5>Các dịch vụ kèm theo đã đặt:</h5>
+                        @for (var i = 0; i < Model.ServiceBooking.Count; i++)
+                        {
+                            <div class="blog_right_sidebar mb-2" style="padding: 5px 30px 5px 30px">
+                                <div class="row single_sidebar_widget author_widget align-items-center justify-content-between">
+                                    <div class="row align-items-center">
+                                        <input class="ml-2" type="checkbox" style="width: 20px" checked>
+                                        @*<img style="width: 50px" class="ml-3" src="@Model.ServiceBooking.ElementAt(i).Image" alt="">*@
+                                        <h4 style="margin-top: 0" class="ml-4">@Model.ServiceBooking.ElementAt(i).Name: @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"),"{0:c}",Model.ServiceBooking.ElementAt(i).Price)/lượt</h4>
+                                        <input value="@Model.ServiceBooking.ElementAt(i).Price" hidden>
+                                    </div>
+                                    <div>
+                                        Số lượt:
+                                        <input type="number" min="0" max="@Model.Room.AdultCapacity" value="@Model.ServiceBooking.ElementAt(i).Amount" disabled name="AmountService">
+                                    </div>
+                                </div>
+                            </div>
+                        }
+                    </div>
                     <h5>Trạng thái: Đặt phòng thành công!</h5>
                     <h2>Số tiền đã thanh toán: @String.Format(System.Globalization.CultureInfo.GetCultureInfo("vi-VN"), "{0:c}", Model.Total)</h2>
                     <p class="text-justify">

@@ -72,7 +72,7 @@ namespace TheSkyHomestay.CustomerSite.Controllers
                 return View(request);
             }
             var result = _userApi.Register(request).GetAwaiter().GetResult();
-            if (!result.Succeeded)
+            if (!result)
             {
                 TempData["Message"] = "Mật khẩu chưa trùng khớp!";
                 return View();

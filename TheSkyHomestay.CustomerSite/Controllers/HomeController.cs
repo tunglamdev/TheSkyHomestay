@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Refit;
 using System.Diagnostics;
+using System.Security.Claims;
 using TheSkyHomestay.CustomerSite.Models;
 using TheSkyHomestay.DTO.Feedback;
 using TheSkyHomestay.Integration.Interfaces;
@@ -31,8 +32,10 @@ namespace TheSkyHomestay.CustomerSite.Controllers
         [HttpPost]
         public IActionResult AddFeedback(CreateFeedbackDTO request)
         {
+            string userId = User.Claims.Where(c => c.Type == "id").Select(c => c.Value).SingleOrDefault();
+            request.TouristId = new Guid(userId);
             var result = _feedbackAPI.Create(request).GetAwaiter().GetResult();
-            return View(Index);
+            return RedirectToAction("Index");
         }
     }
 }

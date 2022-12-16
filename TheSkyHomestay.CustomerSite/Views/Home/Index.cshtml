@@ -140,15 +140,15 @@
                 </div>
             }
         </div>
-
-        <div class="row mt-3">
-            <div class="col-lg-9 col-md-9 col-sm-9">
-                <div class="text-center single-footer-widget">
-                    <div id="mc_embed_signup">
+        @if(User.Identity.IsAuthenticated){
+            <div class="row mt-3">
+                <div class="col-lg-9 col-md-9 col-sm-9">
+                    <div class="text-center single-footer-widget">
                         <form asp-controller="home" asp-action="addfeedback" method="post" class="subscribe_form relative">
                             <div class="input-group d-flex flex-row">
                                 <input style="border: solid 1px white; font-size: 16px; color: white;" type="text" name="comment" placeholder="Chia sẻ cảm nhận của bạn" autocomplete="off">
-                                @*<button type="submit" value="submit" class="btn sub-btn"><span class="lnr lnr-location"></span></button>*@
+                                @*<button type="submit" class="btn sub-btn">Đánh giá</button>*@
+                                <button type="submit" class="btn sub-btn"><span class="lnr lnr-location"></span></button>
                             </div>
                             <div class="d-flex flex-row add-comment-section mt-2 mb-2 justify-content-right">
                                 <p class="mr-3" style="color: white">Bạn đánh giá dịch vụ tại Sky bao nhiêu sao?</p>
@@ -165,11 +165,10 @@
                                     <label for="rate-1" class="fa fa-star"></label>
                                 </div>
                             </div>
-                            <input type="submit" class="btn sub-btn">Đánh giá</input>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
+        }
     </div>
 </section>
