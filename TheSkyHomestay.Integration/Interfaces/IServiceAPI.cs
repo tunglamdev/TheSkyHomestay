@@ -12,5 +12,8 @@ namespace TheSkyHomestay.Integration.Interfaces
     {
         [Get("/api/Services")]
         public Task<List<ServiceDTO>> GetAll();
+
+        [Get("/api/Services/{Id}")]
+        public Task<ServiceDTO> GetById(int Id);
     }
 }

@@ -8,5 +8,8 @@ namespace TheSkyHomestay.Integration.Interfaces
     {
         [Post("/api/Email/Send")]
         public Task SendEmail(SendEmailDTO request);
+
+        [Post("/api/Email/SendFromGuest")]
+        public Task SendEmailFromGuest(SendEmailDTO request);
     }
 }

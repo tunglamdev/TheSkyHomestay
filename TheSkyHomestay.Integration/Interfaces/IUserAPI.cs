@@ -10,7 +10,7 @@ namespace TheSkyHomestay.Integration.Interfaces
         public Task<Guid> RegisterAnonymous(RegisterAnonymousDTO request);
 
         [Post("/api/Users/Register")]
-        public Task<IdentityResult> Register(RegisterDTO request);
+        public Task<bool> Register(RegisterDTO request);
 
         [Post("/api/Users/Login")]
         public Task<string> Login(LoginDTO request);
