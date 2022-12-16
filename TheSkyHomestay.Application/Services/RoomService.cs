@@ -116,6 +116,8 @@ namespace TheSkyHomestay.Application.Services
         }
         public async Task<ApiResult<List<RoomDTO>>> GetByCheckingByCategoryAsync(RoomCheckingByCategoryDTO request)
         {
+            request.FromDate = request.FromDate.AddHours(12);
+            request.ToDate = request.ToDate.AddHours(12);
             var roomList = await _context.Rooms
                 .Include(r => r.Images.Where(i => i.IsDeleted == false))
                 .Where(r => r.IsDeleted == false && r.CategoryId == request.CategoryId)

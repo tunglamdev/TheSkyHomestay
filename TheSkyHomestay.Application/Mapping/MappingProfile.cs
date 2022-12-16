@@ -44,8 +44,9 @@ namespace TheSkyHomestay.Application.Mapping
 
             //Servicebooking mapping
             CreateMap<ServiceBooking, ServiceBookingDTO>()
-                .ForMember(dto => dto.Name, opt => opt.MapFrom(sb => sb.Service.Name));
-            CreateMap<CreateServiceBookingDTO, ServiceBooking>();
+                .ForMember(dto => dto.Name, opt => opt.MapFrom(sb => sb.Service.Name))
+                .ForMember(dto => dto.Image, opt => opt.MapFrom(sb => sb.Service.Image));
+            CreateMap<DTO.Bookings.CreateServiceBookingDTO, ServiceBooking>();
 
             //Bill mapping
             CreateMap<Bill, BillDTO>()

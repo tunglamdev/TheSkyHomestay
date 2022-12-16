@@ -27,6 +27,7 @@ namespace TheSkyHomestay.Application.Services
         {
             var feedbacks = await _context.Feedbacks
                 .Include(f => f.Tourist)
+                .Where(f => f.IsDeleted == false)
                 .Select(f => _mapper.Map<FeedbackDTO>(f)).ToListAsync();
             if(feedbacks == null)
             {
@@ -59,6 +60,27 @@ namespace TheSkyHomestay.Application.Services
             return new ApiResult<bool>(true)
             {
                 Message = "Create new feedback successfully!",
+                StatusCode = 200
+            };
+        }
+
+        public async Task<ApiResult<bool>> DeleteAsync(int Id)
+        {
+            var feedback = await _context.Feedbacks.Where(fb => fb.IsDeleted == false && fb.Id == Id).FirstOrDefaultAsync();
+            if (feedback == null)
+            {
+                return new ApiResult<bool>(false)
+                {
+                    Message = $"Couldn't find the feedback with id: {Id}",
+                    StatusCode = 404
+                };
+            }
+            feedback.IsDeleted = true;
+            await _context.SaveChangesAsync();
+
+            return new ApiResult<bool>(true)
+            {
+                Message = $"Delete the feedback with Id = {Id} successfully!",
                 StatusCode = 200
             };
         }

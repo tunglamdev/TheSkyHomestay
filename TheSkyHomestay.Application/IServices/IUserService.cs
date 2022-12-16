@@ -11,7 +11,8 @@ namespace TheSkyHomestay.Application.IServices
 {
     public interface IUserService
     {
-        Task<ApiResult<List<TouristDTO>>> GetAllAsync();
+        Task<ApiResult<List<TouristDTO>>> GetAllMemberAsync();
+        Task<ApiResult<List<TouristDTO>>> GetAllGuestAsync();
         Task<ApiResult<Guid>> RegisterAnonymousAsync(RegisterAnonymousDTO request);
         Task<IdentityResult> RegisterAsync(RegisterDTO request);
         Task<ApiResult<string>> LoginAsync(LoginDTO request);

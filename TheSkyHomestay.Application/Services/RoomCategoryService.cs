@@ -123,6 +123,12 @@ namespace TheSkyHomestay.Application.Services
                 };
             }
             roomcategory.IsDeleted = true;
+
+            var roomList = await _context.Rooms.Where(r => r.CategoryId == Id).ToListAsync();
+            foreach(var r in roomList)
+            {
+                r.IsDeleted = true;
+            }
             await _context.SaveChangesAsync();
             return new ApiResult<bool>(true)
             {

@@ -10,5 +10,6 @@ namespace TheSkyHomestay.Application.IServices
     public interface IEmailService
     {
         public void SendEmail(SendEmailDTO request);
+        public void SendEmailFromGuest(SendEmailDTO request);
     }
 }

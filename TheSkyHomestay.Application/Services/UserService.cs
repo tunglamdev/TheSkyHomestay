@@ -34,9 +34,9 @@ namespace TheSkyHomestay.Application.Services
             _configuration = configuration;
         }
 
-        public async Task<ApiResult<List<TouristDTO>>> GetAllAsync()
+        public async Task<ApiResult<List<TouristDTO>>> GetAllMemberAsync()
         {
-            var users = await _context.Users.Where(u => u.IsBlocked == false).Select(u => _mapper.Map<TouristDTO>(u)).ToListAsync();
+            var users = await _context.Users.Where(u => u.IsBlocked == false && u.Password!=null).Select(u => _mapper.Map<TouristDTO>(u)).ToListAsync();
             if(users.Count == 0)
             {
                 return new ApiResult<List<TouristDTO>>(null)
@@ -45,6 +45,24 @@ namespace TheSkyHomestay.Application.Services
                     Message = "Something went wrong!"
                 };
             }   
+            return new ApiResult<List<TouristDTO>>(users)
+            {
+                StatusCode = 200,
+                Message = "Get users list successfully!"
+            };
+        }
+
+        public async Task<ApiResult<List<TouristDTO>>> GetAllGuestAsync()
+        {
+            var users = await _context.Users.Where(u => u.IsBlocked == false && u.Password == null).Select(u => _mapper.Map<TouristDTO>(u)).ToListAsync();
+            if (users.Count == 0)
+            {
+                return new ApiResult<List<TouristDTO>>(null)
+                {
+                    StatusCode = 400,
+                    Message = "Something went wrong!"
+                };
+            }
             return new ApiResult<List<TouristDTO>>(users)
             {
                 StatusCode = 200,
@@ -106,8 +124,10 @@ namespace TheSkyHomestay.Application.Services
             var result = await _userManager.CreateAsync(user, request.Password);
             await _userManager.AddClaimAsync(user, new Claim("id", user.Id.ToString()));
             await _userManager.AddClaimAsync(user, new Claim("userName", user.UserName));
-            await _userManager.AddClaimAsync(user, new Claim("Name", user.Name));
+            await _userManager.AddClaimAsync(user, new Claim("name", user.Name));
             await _userManager.AddClaimAsync(user, new Claim("email", user.Email));
+            await _userManager.AddClaimAsync(user, new Claim("phoneNumber", user.PhoneNumber));
+            await _userManager.AddClaimAsync(user, new Claim("cino", user.CINo));
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.NameIdentifier, user.UserName));
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Name, user.Name));
             await _userManager.AddClaimAsync(user, new Claim(ClaimTypes.Email, user.Email));

@@ -12,5 +12,6 @@ namespace TheSkyHomestay.Application.IServices
     {
         public Task<ApiResult<List<FeedbackDTO>>> GetAllAsync();
         public Task<ApiResult<bool>> CreateAsync(CreateFeedbackDTO request);
+        public Task<ApiResult<bool>> DeleteAsync(int Id);
     }
 }

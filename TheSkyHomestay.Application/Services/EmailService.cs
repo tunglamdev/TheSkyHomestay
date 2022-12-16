@@ -33,5 +33,23 @@ namespace TheSkyHomestay.Application.Services
             smtpClient.Send(email);
             smtpClient.Disconnect(true);
         }
+
+        public void SendEmailFromGuest(SendEmailDTO request)
+        {
+            var email = new MimeMessage();
+            email.From.Add(new MailboxAddress("Du khách", _config.GetSection("GuestEmailAddress").Value));
+            email.To.Add(MailboxAddress.Parse(request.To));
+            email.Subject = request.Subject;
+
+            var builder = new BodyBuilder();
+            builder.HtmlBody = request.Body;
+            email.Body = builder.ToMessageBody();
+
+            SmtpClient smtpClient = new SmtpClient();
+            smtpClient.Connect(_config.GetSection("EmailHost").Value, 587, SecureSocketOptions.StartTls);
+            smtpClient.Authenticate(_config.GetSection("GuestEmailAddress").Value, _config.GetSection("GuestEmailPassword").Value);
+            smtpClient.Send(email);
+            smtpClient.Disconnect(true);
+        }
     }
 }
