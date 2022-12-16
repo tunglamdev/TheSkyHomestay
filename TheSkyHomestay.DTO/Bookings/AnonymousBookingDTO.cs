@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml.Linq;
+using TheSkyHomestay.DTO.Service;
 
 namespace TheSkyHomestay.DTO.Bookings
 {
@@ -18,5 +19,9 @@ namespace TheSkyHomestay.DTO.Bookings
         public string CheckInDate { get; set; }
         public string CheckOutDate { get; set; }
         public decimal Price { get; set; }
+        public int NumberOfAdult { get; set; }
+        public int NumberOfChild { get; set; }
+        public List<int> Services { get; set; }
+        public List<int> AmountService { get; set; }
     }
 }

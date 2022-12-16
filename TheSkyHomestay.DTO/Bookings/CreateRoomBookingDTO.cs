@@ -13,6 +13,7 @@ namespace TheSkyHomestay.DTO.Bookings
         public DateTime CheckOutDate { get; set; }
         public decimal Price { get; set; }
         public decimal Total { get; set; }
-        public decimal Deposit { get; set; }
+        public int NumberOfAdult { get; set; }
+        public int NumberOfChild { get; set; }
     }
 }
