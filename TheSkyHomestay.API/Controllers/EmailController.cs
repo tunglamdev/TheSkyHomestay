@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Org.BouncyCastle.Asn1.Ocsp;
 using TheSkyHomestay.Application.IServices;
 using TheSkyHomestay.DTO.Email;
 
@@ -20,6 +21,13 @@ namespace TheSkyHomestay.API.Controllers
         public IActionResult SendEmail([FromBody] SendEmailDTO request)
         {
             _emailService.SendEmail(request);
+            return Ok();
+        }
+
+        [HttpPost("SendFromGuest")]
+        public IActionResult SendEmailFromGuest([FromBody] SendEmailDTO request)
+        {
+            _emailService.SendEmailFromGuest(request);
             return Ok();
         }
     }

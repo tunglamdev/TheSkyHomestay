@@ -40,5 +40,17 @@ namespace TheSkyHomestay.API.Controllers
             }
             return BadRequest(result.Message);
         }
+
+        [HttpDelete("{Id}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> Delete([FromRoute] int Id)
+        {
+            var result = await _feedbackService.DeleteAsync(Id);
+            if (result.StatusCode == 200)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
     }
 }

@@ -39,5 +39,77 @@ namespace TheSkyHomestay.API.Controllers
             }
             return BadRequest(result.Message);
         }
+
+        [HttpGet("CheckInStatistic")]
+        [AllowAnonymous]
+        public async Task<IActionResult> CheckInStatistic()
+        {
+            var result = await _bookingService.CheckInStatistic();
+            if (result.StatusCode == 200)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("RevenueStatistic")]
+        [AllowAnonymous]
+        public async Task<IActionResult> RevenueStatistic()
+        {
+            var result = await _bookingService.RevenueStatistic();
+            if (result.StatusCode == 200)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("Revenue/GetByDate/{date}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetRevenueByDate([FromRoute] DateTime date)
+        {
+            var result = await _bookingService.GetRevenueByDate(date);
+            if (result.StatusCode == 200)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("Revenue/GetByMonth/{month}/{year}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetRevenueByMonth([FromRoute] int month, [FromRoute] int year)
+        {
+            var result = await _bookingService.GetRevenueByMonth(month, year);
+            if (result.StatusCode == 200)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("Revenue/GetByQuarter/{year}/{quarter}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetRevenueByQuarter([FromRoute] int year, [FromRoute] int quarter)
+        {
+            var result = await _bookingService.GetRevenueByQuarter(year, quarter);
+            if (result.StatusCode == 200)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
+
+        [HttpGet("Revenue/GetByYear/{year}")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetRevenueByYear([FromRoute] int year)
+        {
+            var result = await _bookingService.GetRevenueByYear(year);
+            if (result.StatusCode == 200)
+            {
+                return Ok(result.Data);
+            }
+            return BadRequest(result.Message);
+        }
     }
 }

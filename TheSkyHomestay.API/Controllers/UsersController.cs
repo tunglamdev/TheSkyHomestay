@@ -17,12 +17,24 @@ namespace TheSkyHomestay.API.Controllers
             _userService = userService;
         }
 
-        [HttpGet]
+        [HttpGet("Members")]
         [AllowAnonymous]
-        public async Task<IActionResult> GetAll()
+        public async Task<IActionResult> GetAllMember()
         {
-            var result = await _userService.GetAllAsync();
+            var result = await _userService.GetAllMemberAsync();
             if(result.StatusCode == 400)
+            {
+                return BadRequest(result.Message);
+            }
+            return Ok(result.Data);
+        }
+
+        [HttpGet("Guests")]
+        [AllowAnonymous]
+        public async Task<IActionResult> GetAllGuest()
+        {
+            var result = await _userService.GetAllGuestAsync();
+            if (result.StatusCode == 400)
             {
                 return BadRequest(result.Message);
             }
@@ -42,7 +54,7 @@ namespace TheSkyHomestay.API.Controllers
         public async Task<IActionResult> Register(RegisterDTO request)
         {
             var result = await _userService.RegisterAsync(request);
-            return Ok(result);
+            return Ok(result.Succeeded);
         }
 
         [HttpPost("Login")]
