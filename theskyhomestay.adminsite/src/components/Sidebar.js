@@ -1,20 +1,21 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, redirect, useLocation } from 'react-router-dom';
 import logo from '../assets/images/Logo.png';
 import 'boxicons';
+import {Button} from "reactstrap"
 
 const sidebarNavItems = [
-    {
-        display: 'Trang chủ',
-        icon: <i class='bx bx-home' ></i>,
-        to: '/home',
-        section: 'home'
-    },
     {
         display: 'Quản lý đặt phòng',
         icon: <i class='bx bx-category' ></i>,
         to: '/bookings',
         section: 'bookings'
+    },
+    {
+        display: 'Thống kê doanh thu',
+        icon: <i className='bx bx-category'></i>,
+        to: '/statistic',
+        section: 'statistic'
     },
     {
         display: 'Quản lý loại phòng',
@@ -23,20 +24,26 @@ const sidebarNavItems = [
         section: 'categories'
     },
     {
-        display: 'Quản lý các phòng',
-        icon: <i class='bx bx-lemon' ></i>,
+        display: 'Quản lý phòng',
+        icon: <i class='bx bx-category' ></i>,
         to: '/rooms',
         section: 'rooms'
     },
     {
         display: 'Quản lý dịch vụ',
-        icon: <i class='bx bx-lemon' ></i>,
+        icon: <i class='bx bx-category' ></i>,
         to: '/services',
         section: 'services'
     },
     {
-        display: 'Quản lý tài khoản',
-        icon: <i className='bx bx-user'></i>,
+        display: 'Quản lý feedback',
+        icon: <i class='bx bx-category' ></i>,
+        to: '/feedbacks',
+        section: 'feedbacks'
+    },
+    {
+        display: 'Quản lý du khách',
+        icon: <i class='bx bx-category' ></i>,
         to: '/users',
         section: 'users'
     },
@@ -64,6 +71,11 @@ const Sidebar = () => {
         setActiveIndex(curPath.length === 0 ? 0 : activeItem);
     }, [location]);
 
+    const handleLogout = () =>{
+        localStorage.removeItem('token');
+        window.location.href = "http://localhost:3000/account";
+    }
+
     return <div className='sidebar'>
         <div className="sidebar__logo">
             <img src={logo} style={{width: '220px'}}/>
@@ -90,6 +102,9 @@ const Sidebar = () => {
                     </Link>
                 ))
             }
+            <div className="d-flex justify-content-center mt-5">
+                <Button color="danger" onClick={handleLogout}>Đăng xuất</Button>
+            </div>
         </div>
     </div>;
 };

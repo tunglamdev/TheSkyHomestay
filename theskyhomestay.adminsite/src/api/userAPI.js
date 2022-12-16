@@ -1,8 +1,11 @@
 import API from "./API";
 
 const userAPI = {
-  GetAll: () => {
-    return API.get("/Users");
+  GetAllMember: () => {
+    return API.get("/Users/Members");
+  },
+  GetAllGuest: () => {
+    return API.get("/Users/Guests");
   },
   GetById: (id) => {
     return API.get(`/Users/${id}`);

@@ -1,8 +1,7 @@
 import React from "react";
-import { BrowserRouter, Routes, Route } from "react-router-dom";
+import {BrowserRouter, Routes, Route } from "react-router-dom";
 import Admin from './layouts/Admin';
-
-import Home from './views/categories/index';
+import Account from './layouts/Account';
 
 import Bookings from './views/bookings/index';
 
@@ -25,41 +24,50 @@ import ServiceEdit from "./views/services/Edit";
 import ServiceDelete from "./views/services/Delete";
 import ServiceShowImage from "./views/services/ShowImage";
 
+import Feedbacks from "./views/feedbacks/index";
+import FeedbackDelete from "./views/feedbacks/Delete";
+
 import Users from "./views/users/index";
-import Update from "./views/categories/Edit";
+import Statistic from "./views/statistic/index";
+import PrivateRoutes from "./layouts/PrivateRoute";
 
 const URL = () => {
 
     return (
         <BrowserRouter>
         <Routes>
-            <Route path="/" element={<Admin />}>
-                <Route path="/home" element={<Home />}/>
+            <Route element={<PrivateRoutes />}>
+                <Route path="/" element={<Admin />}>
+                    <Route path="/bookings" element={<Bookings />}/>
 
-                <Route path="/bookings" element={<Bookings />}/>
+                    <Route path="/categories" element={<Categories />}/>
+                    <Route path="/categories/create" element={<CategoryCreate />}/>
+                    <Route path="/categories/edit/:id" element={<CategoryEdit />}/>
+                    <Route path="/categories/delete/:id" element={<CategoryDelete />}/>
+                    <Route path="/categories/:id/image" element={<CategoryShowImage />}/>
 
-                <Route path="/categories" element={<Categories />}/>
-                <Route path="/categories/create" element={<CategoryCreate />}/>
-                <Route path="/categories/edit/:id" element={<CategoryEdit />}/>
-                <Route path="/categories/delete/:id" element={<CategoryDelete />}/>
-                <Route path="/categories/:id/image" element={<CategoryShowImage />}/>
+                    <Route path="/rooms" element={<Rooms />}/>
+                    <Route path="/rooms/create" element={<RoomCreate />}/>
+                    <Route path="/rooms/edit/:id" element={<RoomEdit />}/>
+                    <Route path="/rooms/delete/:id" element={<RoomDelete />}/>
+                    <Route path="/rooms/:id/image" element={<RoomShowImage />}/>
+                    <Route path="/rooms/updateimage" element={<ImageUpdate />}/>
 
-                <Route path="/rooms" element={<Rooms />}/>
-                <Route path="/rooms/create" element={<RoomCreate />}/>
-                <Route path="/rooms/edit/:id" element={<RoomEdit />}/>
-                <Route path="/rooms/delete/:id" element={<RoomDelete />}/>
-                <Route path="/rooms/:id/image" element={<RoomShowImage />}/>
-                <Route path="/rooms/updateimage" element={<ImageUpdate />}/>
+                    <Route path="/services" element={<Services />}/>
+                    <Route path="/services/create" element={<ServiceCreate />}/>
+                    <Route path="/services/edit/:id" element={<ServiceEdit />}/>
+                    <Route path="/services/delete/:id" element={<ServiceDelete />}/>
+                    <Route path="/services/:id/image" element={<ServiceShowImage />}/>
 
-                <Route path="/services" element={<Services />}/>
-                <Route path="/services/create" element={<ServiceCreate />}/>
-                <Route path="/services/edit/:id" element={<ServiceEdit />}/>
-                <Route path="/services/delete/:id" element={<ServiceDelete />}/>
-                <Route path="/services/:id/image" element={<ServiceShowImage />}/>
+                    <Route path="/feedbacks" element={<Feedbacks />}/>
+                    <Route path="/feedbacks/delete/:id" element={<FeedbackDelete />}/>
 
-                <Route path="/users" element={<Users />}/>
+                    <Route path="/users" element={<Users />}/>
 
+                    <Route path="/statistic" element={<Statistic />}/>
+                </Route>
             </Route>
+            <Route path="/account" element={<Account />}></Route>
         </Routes>
         </BrowserRouter>
       );
