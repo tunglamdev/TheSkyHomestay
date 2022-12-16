@@ -15,6 +15,7 @@ namespace TheSkyHomestay.DTO.Bill
         public string PhoneNumber{ get; set; }
         public string Email { get; set; }
         public string CiNo { get; set; }
+        public decimal Total { get; set; }
         public List<RoomBookingDTO> RoomBookings { get; set; }
         public List<ServiceBookingDTO> ServiceBookings { get; set; }
         public DateTime CreatedTime { get; set; }
