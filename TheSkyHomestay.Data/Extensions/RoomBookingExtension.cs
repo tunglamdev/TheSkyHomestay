@@ -18,6 +18,8 @@ namespace TheSkyHomestay.Data.Extensions
                 {
                     BillId = 1,
                     RoomId = 1,
+                    NumberOfAdult = 2,
+                    NumberOfChild = 1,
                     CheckInDate = new DateTime(2022,09,29),
                     CheckOutDate = new DateTime(2022,09,30),
                     Price = 500000,
@@ -29,6 +31,8 @@ namespace TheSkyHomestay.Data.Extensions
                 {
                     BillId = 1,
                     RoomId = 3,
+                    NumberOfAdult = 2,
+                    NumberOfChild = 1,
                     CheckInDate = new DateTime(2022, 09, 29),
                     CheckOutDate = new DateTime(2022, 09, 30),
                     Price = 500000,
@@ -40,6 +44,8 @@ namespace TheSkyHomestay.Data.Extensions
                 {
                     BillId = 2,
                     RoomId = 4,
+                    NumberOfAdult = 4,
+                    NumberOfChild = 2,
                     CheckInDate = new DateTime(2022, 09, 29),
                     CheckOutDate = new DateTime(2022, 09, 30),
                     Price = 800000,

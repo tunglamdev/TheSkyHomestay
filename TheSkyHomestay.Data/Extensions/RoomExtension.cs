@@ -19,6 +19,8 @@ namespace TheSkyHomestay.Data.Extensions
                     Price = 500000,
                     Description = "Phòng 1 giường cho 2 người ở",
                     CategoryId = 1, 
+                    AdultCapacity = 2,
+                    ChildCapacity = 1,
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
@@ -27,7 +29,9 @@ namespace TheSkyHomestay.Data.Extensions
                     Name = "Tokyo", 
                     Price = 500000,
                     Description = "Phòng 1 giường cho 2 người ở",
-                    CategoryId = 1, 
+                    CategoryId = 1,
+                    AdultCapacity = 2,
+                    ChildCapacity = 1,
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
@@ -36,7 +40,9 @@ namespace TheSkyHomestay.Data.Extensions
                     Name = "Berlin", 
                     Price = 500000,
                     Description = "Phòng 1 giường cho 2 người ở",
-                    CategoryId = 1, 
+                    CategoryId = 1,
+                    AdultCapacity = 2,
+                    ChildCapacity = 1,
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
@@ -44,8 +50,10 @@ namespace TheSkyHomestay.Data.Extensions
                     Id = 4, 
                     Name = "Paris", 
                     Price = 800000,
-                    Description = "Phòng 2 giường cho 2 người ở",
+                    Description = "Phòng 2 giường cho 4 người ở",
                     CategoryId = 2,
+                    AdultCapacity = 4,
+                    ChildCapacity = 2,
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 },
@@ -53,8 +61,10 @@ namespace TheSkyHomestay.Data.Extensions
                     Id = 5, 
                     Name = "California", 
                     Price = 800000,
-                    Description = "Phòng 2 giường cho 2 người ở",
+                    Description = "Phòng 2 giường cho 4 người ở",
                     CategoryId = 2,
+                    AdultCapacity = 4,
+                    ChildCapacity = 2,
                     CreatedTime = DateTime.Now, 
                     UpdatedTime = DateTime.Now 
                 }

@@ -14,6 +14,7 @@ namespace TheSkyHomestay.Data.Configurations
         public void Configure(EntityTypeBuilder<Bill> builder)
         {
             builder.Property(x => x.CreatedTime).HasDefaultValue(DateTime.Now);
+            builder.Property(x => x.Total).HasDefaultValue(0);
         }
     }
 }
