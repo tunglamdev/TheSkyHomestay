@@ -12,6 +12,7 @@ namespace TheSkyHomestay.Data.Models
         public int Id { get; set; }
         public Guid TouristId { get; set; }
         public DateTime CreatedTime { get; set; }
+        public decimal Total { get; set; }
         public virtual User Tourist { get; set; }
         public virtual List<RoomBooking> RoomBookings { get; set; }
         public virtual List<ServiceBooking> ServiceBookings { get; set; }
