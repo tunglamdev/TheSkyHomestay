@@ -14,6 +14,8 @@ namespace TheSkyHomestay.DTO.Room
         public string Name { get; set; }
         public decimal Price { get; set; }
         public string Description { get; set; }
+        public int AdultCapacity { get; set; }
+        public int ChildCapacity { get; set; }
         public DateTime CreatedTime { get; set; }
         public DateTime UpdatedTime { get; set; }
         public List<ImageDTO> Images { get; set; }

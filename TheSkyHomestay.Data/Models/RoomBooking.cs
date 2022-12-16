@@ -10,6 +10,8 @@ namespace TheSkyHomestay.Data.Models
     {
         public int BillId { get; set; }
         public int RoomId { get; set; }
+        public int NumberOfAdult { get; set; }
+        public int NumberOfChild { get; set; }
         public DateTime CheckInDate { get; set; }
         public DateTime CheckOutDate { get; set; }
         public decimal Price { get; set; }
