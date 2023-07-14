@@ -1,2 +1,2 @@
 # TheSkyHomestay
-This is my project for the final thesis at Can Tho University
+This is my project for the graduation thesis at Can Tho University.
