@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheSkyHomestay.Data.EF;
 
@@ -11,9 +12,10 @@ using TheSkyHomestay.Data.EF;
 namespace TheSkyHomestay.Data.Migrations
 {
     [DbContext(typeof(TheSkyHomestayDbContext))]
-    partial class TheSkyHomestayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221026072923_AddDescriptionForTableRoom_RemoveTableRoomState")]
+    partial class AddDescriptionForTableRoom_RemoveTableRoomState
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -147,12 +149,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(1354));
-
-                    b.Property<decimal>("Total")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("decimal(18,2)")
-                        .HasDefaultValue(0m);
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(5227));
 
                     b.Property<Guid>("TouristId")
                         .HasColumnType("uniqueidentifier");
@@ -167,15 +164,13 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3177),
-                            Total = 0m,
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7947),
                             TouristId = new Guid("8a820adb-93d7-4c6f-9404-bdbfc14419f4")
                         },
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3178),
-                            Total = 0m,
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7948),
                             TouristId = new Guid("51b4b238-4ae0-4e46-a3f4-e0acf7666b15")
                         });
                 });
@@ -195,7 +190,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(486));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(3827));
 
                     b.Property<bool>("IsDeleted")
                         .ValueGeneratedOnAdd()
@@ -208,7 +203,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("UpdatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(584));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(4020));
 
                     b.Property<int>("Vote")
                         .ValueGeneratedOnAdd()
@@ -226,20 +221,20 @@ namespace TheSkyHomestay.Data.Migrations
                         {
                             Id = 1,
                             Comment = "Phòng rất đẹp! Anh chủ rất dễ thương luôn!",
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3163),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7930),
                             IsDeleted = false,
                             TouristId = new Guid("8a820adb-93d7-4c6f-9404-bdbfc14419f4"),
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3163),
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7931),
                             Vote = 5
                         },
                         new
                         {
                             Id = 2,
                             Comment = "Phòng rất đẹp! Anh chủ rất dễ thương luôn!",
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3165),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7933),
                             IsDeleted = false,
                             TouristId = new Guid("51b4b238-4ae0-4e46-a3f4-e0acf7666b15"),
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3165),
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7933),
                             Vote = 5
                         });
                 });
@@ -252,23 +247,13 @@ namespace TheSkyHomestay.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"), 1L, 1);
 
-                    b.Property<int>("AdultCapacity")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(2);
-
                     b.Property<int>("CategoryId")
                         .HasColumnType("int");
-
-                    b.Property<int>("ChildCapacity")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
 
                     b.Property<DateTime>("CreatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(5180));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(2538));
 
                     b.Property<string>("Description")
                         .IsRequired()
@@ -288,10 +273,15 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
 
+                    b.Property<double>("Stars")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("float")
+                        .HasDefaultValue(0.0);
+
                     b.Property<DateTime>("UpdatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(5289));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(2650));
 
                     b.HasKey("Id");
 
@@ -303,67 +293,62 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 1,
-                            AdultCapacity = 2,
                             CategoryId = 1,
-                            ChildCapacity = 1,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2901),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7869),
                             Description = "Phòng 1 giường cho 2 người ở",
                             IsDeleted = false,
                             Name = "Hollywood",
                             Price = 500000m,
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2903)
+                            Stars = 5.0,
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7870)
                         },
                         new
                         {
                             Id = 2,
-                            AdultCapacity = 2,
                             CategoryId = 1,
-                            ChildCapacity = 1,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2904),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7872),
                             Description = "Phòng 1 giường cho 2 người ở",
                             IsDeleted = false,
                             Name = "Tokyo",
                             Price = 500000m,
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2905)
+                            Stars = 5.0,
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7873)
                         },
                         new
                         {
                             Id = 3,
-                            AdultCapacity = 2,
                             CategoryId = 1,
-                            ChildCapacity = 1,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2906),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7874),
                             Description = "Phòng 1 giường cho 2 người ở",
                             IsDeleted = false,
                             Name = "Berlin",
                             Price = 500000m,
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2906)
+                            Stars = 4.5,
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7875)
                         },
                         new
                         {
                             Id = 4,
-                            AdultCapacity = 4,
                             CategoryId = 2,
-                            ChildCapacity = 2,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2907),
-                            Description = "Phòng 2 giường cho 4 người ở",
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7876),
+                            Description = "Phòng 2 giường cho 2 người ở",
                             IsDeleted = false,
                             Name = "Paris",
                             Price = 800000m,
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2907)
+                            Stars = 5.0,
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7877)
                         },
                         new
                         {
                             Id = 5,
-                            AdultCapacity = 4,
                             CategoryId = 2,
-                            ChildCapacity = 2,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2908),
-                            Description = "Phòng 2 giường cho 4 người ở",
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7878),
+                            Description = "Phòng 2 giường cho 2 người ở",
                             IsDeleted = false,
                             Name = "California",
                             Price = 800000m,
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(2909)
+                            Stars = 5.0,
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(7878)
                         });
                 });
 
@@ -378,7 +363,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("BookingTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(7963));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(9067));
 
                     b.Property<DateTime>("CancelingTime")
                         .HasColumnType("datetime2");
@@ -386,27 +371,22 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("CheckInDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(7781));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(8768));
 
                     b.Property<DateTime>("CheckOutDate")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(7872));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(8930));
+
+                    b.Property<decimal>("Deposit")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("decimal(18,2)")
+                        .HasDefaultValue(0m);
 
                     b.Property<bool>("IsCanceled")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("bit")
                         .HasDefaultValue(false);
-
-                    b.Property<int>("NumberOfAdult")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(2);
-
-                    b.Property<int>("NumberOfChild")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasDefaultValue(1);
 
                     b.Property<decimal>("Price")
                         .HasColumnType("decimal(18,2)");
@@ -425,13 +405,12 @@ namespace TheSkyHomestay.Data.Migrations
                         {
                             BillId = 1,
                             RoomId = 1,
-                            BookingTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3194),
+                            BookingTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7964),
                             CancelingTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckInDate = new DateTime(2022, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deposit = 200000m,
                             IsCanceled = false,
-                            NumberOfAdult = 2,
-                            NumberOfChild = 1,
                             Price = 500000m,
                             Total = 500000m
                         },
@@ -439,13 +418,12 @@ namespace TheSkyHomestay.Data.Migrations
                         {
                             BillId = 1,
                             RoomId = 3,
-                            BookingTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3195),
+                            BookingTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7966),
                             CancelingTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckInDate = new DateTime(2022, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deposit = 200000m,
                             IsCanceled = false,
-                            NumberOfAdult = 2,
-                            NumberOfChild = 1,
                             Price = 500000m,
                             Total = 500000m
                         },
@@ -453,13 +431,12 @@ namespace TheSkyHomestay.Data.Migrations
                         {
                             BillId = 2,
                             RoomId = 4,
-                            BookingTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3197),
+                            BookingTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7967),
                             CancelingTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckInDate = new DateTime(2022, 9, 29, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             CheckOutDate = new DateTime(2022, 9, 30, 0, 0, 0, 0, DateTimeKind.Unspecified),
+                            Deposit = 500000m,
                             IsCanceled = false,
-                            NumberOfAdult = 4,
-                            NumberOfChild = 2,
                             Price = 800000m,
                             Total = 800000m
                         });
@@ -476,7 +453,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(5729));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(3247));
 
                     b.Property<string>("Image")
                         .IsRequired()
@@ -497,7 +474,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("UpdatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(5813));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(3416));
 
                     b.HasKey("Id");
 
@@ -507,20 +484,20 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3017),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8018),
                             Image = "phong-1-giuong.jpg",
                             IsDeleted = false,
                             Name = "Phòng 1 giường",
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3018)
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8019)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3019),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8020),
                             Image = "phong-2-giuong.jpg",
                             IsDeleted = false,
                             Name = "Phòng 2 giường",
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3019)
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8021)
                         });
                 });
 
@@ -535,7 +512,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(954));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(4619));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -547,8 +524,8 @@ namespace TheSkyHomestay.Data.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasMaxLength(300)
-                        .HasColumnType("nvarchar(300)");
+                        .HasMaxLength(30)
+                        .HasColumnType("nvarchar(30)");
 
                     b.Property<int>("RoomId")
                         .HasColumnType("int");
@@ -556,7 +533,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("UpdatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(1059));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(4784));
 
                     b.HasKey("Id");
 
@@ -568,7 +545,7 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3222),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7996),
                             Description = "Ảnh phòng 1",
                             IsDeleted = false,
                             Name = "phong1-1.jpg",
@@ -578,7 +555,7 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3224),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7997),
                             Description = "Ảnh phòng 1",
                             IsDeleted = false,
                             Name = "phong1-2.jpg",
@@ -588,7 +565,7 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 3,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3224),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7998),
                             Description = "Ảnh phòng 1",
                             IsDeleted = false,
                             Name = "phong1-3.jpg",
@@ -598,7 +575,7 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 4,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3225),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7999),
                             Description = "Ảnh phòng 1",
                             IsDeleted = false,
                             Name = "phong2-1.jpg",
@@ -608,7 +585,7 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 5,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3258),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7999),
                             Description = "Ảnh phòng 1",
                             IsDeleted = false,
                             Name = "phong2-1.jpg",
@@ -628,7 +605,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("CreatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(6374));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(4027));
 
                     b.Property<string>("Description")
                         .HasColumnType("nvarchar(max)");
@@ -655,7 +632,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("UpdatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(6460));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(4114));
 
                     b.HasKey("Id");
 
@@ -665,32 +642,32 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = 1,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3035),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8044),
                             Description = "200.000/lượt/24h, xe được bao xăng chạy thoải mái",
                             IsDeleted = false,
                             Name = "Thuê xe máy",
                             Price = 200000m,
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3036)
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8045)
                         },
                         new
                         {
                             Id = 2,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3037),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8046),
                             Description = "50.000/lượt/người, được hỗ trợ kính lặn biển, vợt bắt nhum",
                             IsDeleted = false,
                             Name = "Lặn nhum",
                             Price = 50000m,
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3037)
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8047)
                         },
                         new
                         {
                             Id = 3,
-                            CreatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3038),
+                            CreatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8048),
                             Description = "50.000/lượt/người, hướng dẫn leo núi, hỗ trợ nước uống",
                             IsDeleted = false,
                             Name = "Chinh phục Ma Thiên Lãnh",
                             Price = 50000m,
-                            UpdatedTime = new DateTime(2022, 12, 4, 19, 9, 48, 421, DateTimeKind.Local).AddTicks(3038)
+                            UpdatedTime = new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(8049)
                         });
                 });
 
@@ -710,7 +687,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("BookingTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(9298));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 991, DateTimeKind.Local).AddTicks(1656));
 
                     b.Property<DateTime>("CancelingTime")
                         .HasColumnType("datetime2");
@@ -738,7 +715,7 @@ namespace TheSkyHomestay.Data.Migrations
                             BillId = 1,
                             ServiceId = 1,
                             Amount = 1,
-                            BookingTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3209),
+                            BookingTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7981),
                             CancelingTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsCanceled = false,
                             Price = 200000m,
@@ -749,7 +726,7 @@ namespace TheSkyHomestay.Data.Migrations
                             BillId = 1,
                             ServiceId = 2,
                             Amount = 2,
-                            BookingTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3210),
+                            BookingTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7982),
                             CancelingTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsCanceled = false,
                             Price = 50000m,
@@ -760,7 +737,7 @@ namespace TheSkyHomestay.Data.Migrations
                             BillId = 2,
                             ServiceId = 1,
                             Amount = 2,
-                            BookingTime = new DateTime(2022, 12, 4, 19, 9, 48, 425, DateTimeKind.Local).AddTicks(3211),
+                            BookingTime = new DateTime(2022, 10, 26, 14, 29, 22, 997, DateTimeKind.Local).AddTicks(7983),
                             CancelingTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
                             IsCanceled = false,
                             Price = 200000m,
@@ -820,6 +797,7 @@ namespace TheSkyHomestay.Data.Migrations
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Password")
+                        .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("PasswordHash")
@@ -836,7 +814,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("RegisteredTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(7062));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(6558));
 
                     b.Property<string>("SecurityStamp")
                         .HasColumnType("nvarchar(max)");
@@ -847,7 +825,7 @@ namespace TheSkyHomestay.Data.Migrations
                     b.Property<DateTime>("UpdatedTime")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("datetime2")
-                        .HasDefaultValue(new DateTime(2022, 12, 4, 19, 9, 48, 420, DateTimeKind.Local).AddTicks(7181));
+                        .HasDefaultValue(new DateTime(2022, 10, 26, 14, 29, 22, 990, DateTimeKind.Local).AddTicks(6864));
 
                     b.Property<string>("UserName")
                         .HasColumnType("nvarchar(max)");
@@ -863,13 +841,13 @@ namespace TheSkyHomestay.Data.Migrations
                             AccessFailedCount = 0,
                             Avatar = "lam.jpg",
                             CINo = "333444555",
-                            ConcurrencyStamp = "2b040956-e210-49df-9e45-7fcbcb0cbd6f",
+                            ConcurrencyStamp = "6369c70f-a645-4549-b73c-4936fc25ea94",
                             Email = "lam@gmail.com",
                             EmailConfirmed = false,
                             IsBlocked = false,
                             LockoutEnabled = false,
                             Name = "Nguyễn Tùng Lâm",
-                            Password = "AQAAAAEAACcQAAAAEJnmWgd4RtYVf3nQy2kK/gj4zItt3gurvTXaztSpwt/QPvOZOxhXzn/01UTMGQqKqw==",
+                            Password = "AQAAAAEAACcQAAAAEC8gZ8JRNbCAgw51XGEfB9bbGInOatkCu252AQJoIwfAFXU8QmsaKTxE4UfPnAk1lQ==",
                             PhoneNumber = "0338307449",
                             PhoneNumberConfirmed = false,
                             RegisteredTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -882,13 +860,13 @@ namespace TheSkyHomestay.Data.Migrations
                             AccessFailedCount = 0,
                             Avatar = "an.jpg",
                             CINo = "444555666",
-                            ConcurrencyStamp = "b94eb68a-c967-41c3-a13e-2d2feea94a27",
+                            ConcurrencyStamp = "fa7b1967-92e4-44a3-b18c-cc69a264d5f1",
                             Email = "an@gmail.com",
                             EmailConfirmed = false,
                             IsBlocked = false,
                             LockoutEnabled = false,
                             Name = "Nguyễn Văn An",
-                            Password = "AQAAAAEAACcQAAAAEI8/eXSL7Njg+rSo1Nomyik819ASSMf3ld29jtPCGQqdE/B7MEi0wr0LvveB3hwPEA==",
+                            Password = "AQAAAAEAACcQAAAAEK2vglDP+Wdlgs2w5O90ZUMOxPkUQV4PMDhjoYTKIuot+HqOtUdJasTjSEJ9EbyAjQ==",
                             PhoneNumber = "0338307994",
                             PhoneNumberConfirmed = false,
                             RegisteredTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -901,13 +879,13 @@ namespace TheSkyHomestay.Data.Migrations
                             AccessFailedCount = 0,
                             Avatar = "admin.jpg",
                             CINo = "777888999",
-                            ConcurrencyStamp = "f2190dd9-b2a2-4b0f-bfbd-86956a43238e",
+                            ConcurrencyStamp = "b5952318-12e8-4506-8e95-d68a4cae3937",
                             Email = "admin@gmail.com",
                             EmailConfirmed = false,
                             IsBlocked = false,
                             LockoutEnabled = false,
                             Name = "John",
-                            Password = "AQAAAAEAACcQAAAAEIXLznxFYVw+2uXe0tK+ayVY8rEvcAVXRCXbxLfCIh1NuskCDrWB7pvnTnwOYq8XVw==",
+                            Password = "AQAAAAEAACcQAAAAEJ6gOqbLnun7srJx6UlOtFYS6nPhdL/fGQR+B4b3AyalFCv01a9EPEISlykeN+alhw==",
                             PhoneNumber = "0123456789",
                             PhoneNumberConfirmed = false,
                             RegisteredTime = new DateTime(1, 1, 1, 0, 0, 0, 0, DateTimeKind.Unspecified),
@@ -943,7 +921,7 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = new Guid("9e87b492-5343-4272-9a34-fa5de7cffb22"),
-                            ConcurrencyStamp = "ff2dddaa-b470-4a3c-868e-abec09fe36fa",
+                            ConcurrencyStamp = "5d15f46a-2ff0-49b9-948c-392e0b7c5831",
                             Description = "Administrator role",
                             Name = "admin",
                             NormalizedName = "admin"
@@ -951,7 +929,7 @@ namespace TheSkyHomestay.Data.Migrations
                         new
                         {
                             Id = new Guid("8f7579ee-4af9-4b71-9ada-7f792f76dc31"),
-                            ConcurrencyStamp = "ea5c44c1-c245-4df6-a126-d0eacabd330c",
+                            ConcurrencyStamp = "e4033980-9ae4-4442-8148-c50e7da964c3",
                             Description = "Tourist role",
                             Name = "tourist",
                             NormalizedName = "tourist"

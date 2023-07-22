@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TheSkyHomestay.Data.EF;
 
@@ -11,9 +12,10 @@ using TheSkyHomestay.Data.EF;
 namespace TheSkyHomestay.Data.Migrations
 {
     [DbContext(typeof(TheSkyHomestayDbContext))]
-    partial class TheSkyHomestayDbContextModelSnapshot : ModelSnapshot
+    [Migration("20221204120949_Add_Total_To_Bill")]
+    partial class Add_Total_To_Bill
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
